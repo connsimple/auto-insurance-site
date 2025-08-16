@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a Quote - Conn Simple Auto Insurance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Conn Simple Auto Insurance</h1>
+  </header>
+
+  <!-- Quote Form -->
+  <main>
+    <section class="quote-form">
+      <h2>Get Your Free Quote</h2>
+      <form action="#" method="POST" enctype="multipart/form-data">
+        
+        <!-- Personal Information -->
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <!-- Vehicle Information -->
+        <h3>Vehicle Information</h3>
+
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="year" min="1900" max="2099" required>
+
+        <label for="make">Make:</label>
+        <input type="text" id="make" name="make" required>
+
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" required>
+
+        <label for="vin">VIN Number:</label>
+        <input type="text" id="vin" name="vin" required>
+
+        <!-- License Information -->
+        <h3>Driver Information</h3>
+
+        <label for="license-number">Driver’s License Number:</label>
+        <input type="text" id="license-number" name="license-number" required>
+
+        <label for="license-copy">Upload Driver’s License:</label>
+        <input type="file" id="license-copy" name="license-copy" accept="image/*,.pdf" required>
+
+        <!-- Submit -->
+        <button type="submit" class="hero-btn">Get My Quote</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Conn Simple Auto Insurance</p>
+  </footer>
+</body>
+</html>
