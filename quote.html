@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a Quote - Conn Simple Auto Insurance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Conn Simple Auto Insurance Logo">
+      <h1>Conn Simple Auto Insurance</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quote.html" class="active">Get a Quote</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Quote Form -->
+  <section class="quote-form">
+    <h2>Get Your Free Quote</h2>
+    <p>Fill in the details below and we’ll send you a quote that beats competitor pricing.</p>
+
+    <form name="quote" method="POST" data-netlify="true" action="/thankyou.html" enctype="multipart/form-data">
+      <input type="hidden" name="form-name" value="quote">
+
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="fullname" required>
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="address">Home Address:</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="license">Driver’s License Number:</label>
+      <input type="text" id="license" name="license" required>
+
+      <label for="dl_upload">Upload Copy of Driver’s License:</label>
+      <input type="file" id="dl_upload" name="dl_upload" accept="image/*,.pdf" required>
+
+      <label for="year">Vehicle Year:</label>
+      <input type="number" id="year" name="year" required>
+
+      <label for="make">Vehicle Make:</label>
+      <input type="text" id="make" name="make" required>
+
+      <label for="model">Vehicle Model:</label>
+      <input type="text" id="model" name="model" required>
+
+      <label for="vin">Vehicle VIN Number:</label>
+      <input type="text" id="vin" name="vin" required>
+
+      <button type="submit" class="btn">Submit Quote Request</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Conn Simple Auto Insurance | Contact us: simpleautocenter@gmail.com</p>
+  </footer>
+</body>
+</html>
