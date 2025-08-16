@@ -1,0 +1,118 @@
+/* ========== Base / Reset ========== */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background: #f5f7fb;
+}
+
+/* ========== Brand Colors (UConn-ish) ========== */
+:root{
+  --navy:#0C2340;       /* primary */
+  --navy-dark:#091b30;
+  --red:#C8102E;        /* accent */
+  --red-dark:#a60f25;
+  --gray:#7C878E;
+  --card:#ffffff;
+}
+
+/* ========== Header / Nav ========== */
+.site-header{
+  background: var(--navy);
+  color:#fff;
+  padding: 12px 16px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.brand{display:flex; align-items:center; gap:12px;}
+.logo{height:48px; width:auto;}
+.brand-text h1{margin:0; font-size:1.25rem;}
+.tagline{margin:0; font-weight:600; color:#ffd700; font-size:.95rem;}
+
+.nav {display:flex; gap:16px;}
+.nav a{
+  color:#fff; text-decoration:none; padding:8px 10px; border-radius:6px; font-weight:600;
+}
+.nav a:hover, .nav a.active{background: rgba(255,255,255,0.12);}
+
+/* ========== Hero ========== */
+.hero{
+  min-height: 52vh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  color:#fff;
+  background:
+    linear-gradient( to bottom right, rgba(12,35,64,.85), rgba(12,35,64,.7)),
+    url('hero-bg.jpg') center/cover no-repeat;
+}
+.hero-content{padding: 40px 16px; max-width: 860px;}
+.hero h2{font-size:clamp(1.8rem, 3.5vw, 3rem); margin:0 0 10px;}
+.hero p{margin:0 0 20px; font-size:1.1rem;}
+
+/* ========== Buttons ========== */
+.btn{
+  display:inline-block; text-decoration:none; border:0; cursor:pointer;
+  padding:12px 20px; border-radius:8px; font-weight:700; background: var(--navy); color:#fff;
+  transition: .2s ease;
+}
+.btn:hover{background: var(--navy-dark);}
+.btn-accent{background: var(--red);}
+.btn-accent:hover{background: var(--red-dark);}
+
+/* ========== Sections / Cards ========== */
+main{padding: 30px 16px;}
+.section-title{text-align:center; margin: 10px 0 22px; color: var(--navy);}
+.features{max-width:1100px; margin:0 auto;}
+.cards{display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:18px;}
+.card{
+  background: var(--card); border-radius:12px; padding:18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+.card h4{margin:0 0 8px; color: var(--navy);}
+.card p{margin:0; color:#333;}
+.cta{ text-align:center; padding: 32px 16px; }
+
+/* ========== Forms ========== */
+.form-section{
+  background: var(--card); max-width: 760px; margin: 26px auto; padding: 22px;
+  border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+.form-section h2{margin:0 0 6px; color:var(--navy);}
+.muted{color:#666; margin: 0 0 14px;}
+.hidden{display:none;}
+
+.styled-form label{display:block; font-weight:700; margin: 12px 0 6px;}
+.styled-form input, .styled-form textarea, .styled-form select{
+  width:100%; padding:12px; border:1px solid #d8dce5; border-radius:8px; font-size:1rem; background:#fff;
+}
+.styled-form textarea{resize:vertical;}
+.styled-form .btn{margin-top:8px;}
+
+.grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;}
+@media (max-width:800px){ .grid-3{grid-template-columns: 1fr; }}
+
+/* ========== Content Section ========== */
+.content{
+  max-width: 900px; margin: 26px auto; padding: 0 4px;
+}
+.content h2{color: var(--navy); margin-bottom: 10px;}
+.list{margin: 10px 0 0 18px;}
+.list li{margin: 6px 0;}
+
+/* ========== Thank You ========== */
+.thankyou{
+  text-align:center; padding: 60px 16px; max-width: 800px; margin: 0 auto;
+}
+.thankyou h2{color: var(--navy); margin-bottom: 10px;}
+.thankyou p{margin: 8px 0 16px;}
+
+/* ========== Footer ========== */
+.site-footer{
+  background: var(--navy); color:#fff; text-align:center; padding: 16px;
+}
+.site-footer a{color:#fff; text-decoration: underline;}
