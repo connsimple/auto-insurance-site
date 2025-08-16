@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a Quote - Conn Simple Auto Insurance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Conn Simple Auto Insurance Logo">
+      <h1>Conn Simple Auto Insurance</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quote.html" class="active">Get a Quote</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Quote Form -->
+  <section class="form-section">
+    <h2>Request Your Auto Insurance Quote</h2>
+    <p>Fill out the form below and we’ll get back to you with a rate that beats the competition!</p>
+
+    <form name="quote" method="POST" data-netlify="true" enctype="multipart/form-data">
+      <input type="hidden" name="form-name" value="quote">
+
+      <!-- Customer Info -->
+      <label>Full Name *</label>
+      <input type="text" name="name" required>
+
+      <label>Email *</label>
+      <input type="email" name="email" required>
+
+      <label>Phone Number *</label>
+      <input type="tel" name="phone" required>
+
+      <!-- Vehicle Info -->
+      <label>Vehicle Year *</label>
+      <input type="text" name="year" required>
+
+      <label>Vehicle Make *</label>
+      <input type="text" name="make" required>
+
+      <label>Vehicle Model *</label>
+      <input type="text" name="model" required>
+
+      <label>VIN Number *</label>
+      <input type="text" name="vin" required>
+
+      <!-- License Info -->
+      <label>Driver License Number *</label>
+      <input type="text" name="license_number" required>
+
+      <label>Upload Driver License (image or PDF) *</label>
+      <input type="file" name="license_file" accept=".jpg,.jpeg,.png,.pdf" required>
+
+      <!-- Submit -->
+      <button type="submit" class="btn">Submit Quote Request</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Conn Simple Auto Insurance | Contact us: simpleautocenter@gmail.com</p>
+  </footer>
+</body>
+</html>
