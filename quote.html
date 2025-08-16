@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Get a Quote - Conn Simple Auto Insurance</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <img src="logo.png" alt="Conn Simple Auto Insurance logo" class="logo"/>
+      <div class="brand-text">
+        <h1>Conn Simple Auto Insurance</h1>
+        <p class="tagline">Connecticut Auto Insurance</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="quote.html" class="active">Get a Quote</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Request Your Free Quote</h2>
+      <p class="muted">All fields are required.</p>
+
+      <!-- Netlify Forms: stores submissions + allows email notifications -->
+      <form name="quote" method="POST" data-netlify="true" action="/thankyou.html" enctype="multipart/form-data" netlify-honeypot="bot-field" class="styled-form" id="quoteForm">
+        <input type="hidden" name="form-name" value="quote"/>
+        <p class="hidden"><label>Don’t fill this out if you’re human: <input name="bot-field"/></label></p>
+
+        <!-- Contact -->
+        <label for="fullname">Full Name</label>
+        <input id="fullname" name="Full Name" type="text" required/>
+
+        <label for="email">Email</label>
+        <input id="email" name="Email" type="email" required/>
+
+        <label for="phone">Phone</label>
+        <input id="phone" name="Phone" type="tel" required/>
+
+        <!-- Driver -->
+        <label for="license">Driver’s License Number</label>
+        <input id="license" name="Driver License Number" type="text" required/>
+
+        <label for="dlfile">Upload Driver’s License (image or PDF)</label>
+        <input id="dlfile" name="Driver License File" type="file" accept=".jpg,.jpeg,.png,.pdf" required/>
+
+        <!-- Vehicle -->
+        <div class="grid-3">
+          <div>
+            <label for="year">Vehicle Year</label>
+            <input id="year" name="Vehicle Year" type="number" min="1900" max="2099" required/>
+          </div>
+          <div>
+            <label for="make">Vehicle Make</label>
+            <input id="make" name="Vehicle Make" type="text" required/>
+          </div>
+          <div>
+            <label for="model">Vehicle Model</label>
+            <input id="model" name="Vehicle Model" type="text" required/>
+          </div>
+        </div>
+
+        <label for="vin">VIN Number (17 characters)</label>
+        <input id="vin" name="VIN" type="text" minlength="17" maxlength="17" required/>
+
+        <button type="submit" class="btn">Submit Quote Request</button>
+      </form>
+
+      <p class="disclaimer">By submitting, you agree to be contacted about your insurance quote.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Conn Simple Auto Insurance • All rights reserved</p>
+    <p>Email: <a href="mailto:simpleautocenter@gmail.com">simpleautocenter@gmail.com</a></p>
+  </footer>
+
+  <!-- Light client-side checks (VIN length, simple phone cleanup) -->
+  <script>
+    document.getElementById('quoteForm').addEventListener('submit', function(e){
+      const vin = document.getElementById('vin').value.trim();
+      if (vin.length !== 17) {
+        e.preventDefault();
+        alert('VIN must be exactly 17 characters.');
+      }
+    });
+  </script>
+</body>
+</html>
