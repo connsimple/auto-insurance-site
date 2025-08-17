@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quotes - Conn Simple</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo"><img src="logo.png" alt="Logo" /><span>CONN SIMPLE</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="quotes.html" class="active">Quotes</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-content">
+    <h1>Get a Quote</h1>
+    <form id="quoteForm">
+      <label>Name: <input type="text" required /></label>
+      <label>Email: <input type="email" required /></label>
+      <label>Vehicle: <input type="text" required /></label>
+      <label>Coverage:
+        <select required>
+          <option value="">Select coverage</option>
+          <option value="basic">Basic</option>
+          <option value="standard">Standard</option>
+          <option value="premium">Premium</option>
+        </select>
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="quoteResult"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Conn Simple. All rights reserved.</p>
+  </footer>
+</body>
+</html>
