@@ -3,62 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard — Conn Simple</title>
+  <title>Dashboard - Conn Simple</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background: #004c97;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    header img {
+      height: 40px;
+      vertical-align: middle;
+    }
+
+    .dashboard-container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    .welcome {
+      background: #eaf4ff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .policy-summary {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      background: #f0f8ff;
+      border-color: #004c97;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #004c97;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #004c97;
+      color: white;
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="Conn Simple Logo">
-      <h1>CONN SIMPLE</h1>
-      <p>Connecticut Auto Insurance</p>
-    </div>
-    <nav>
-      <div class="menu-toggle">☰</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="dashboard.html" class="active">Dashboard</a></li>
-      </ul>
-    </nav>
+    <img src="logo.png" alt="Conn Simple Logo">
+    <h1>Conn Simple Dashboard</h1>
   </header>
 
-  <main>
-    <section class="page-header">
-      <h2>Your Dashboard</h2>
-      <p>Welcome back! Manage your policies and payments here.</p>
-    </section>
+  <div class="dashboard-container">
+    <div class="welcome">
+      <h2>Welcome, [Customer Name]</h2>
+      <p>Here’s a quick overview of your account.</p>
+    </div>
 
-    <section class="dashboard-section">
-      <div class="dashboard-card">
-        <h3>Policy Information</h3>
-        <p><strong>Policy #:</strong> CS-123456</p>
-        <p><strong>Status:</strong> Active</p>
-        <p><strong>Coverage:</strong> Full Coverage</p>
-      </div>
+    <div class="policy-summary">
+      <h3>Your Policy</h3>
+      <p><strong>Policy #:</strong> CS-123456789</p>
+      <p><strong>Status:</strong> Active</p>
+      <p><strong>Coverage:</strong> Full Auto Coverage</p>
+      <p><strong>Next Payment Due:</strong> Sept 30, 2025</p>
+    </div>
 
-      <div class="dashboard-card">
-        <h3>Payments</h3>
-        <p><strong>Next Payment:</strong> March 15, 2025</p>
-        <p><strong>Amount Due:</strong> $120.00</p>
-        <button>Make a Payment</button>
-      </div>
-
-      <div class="dashboard-card">
-        <h3>Claims</h3>
-        <p>You have no active claims.</p>
-        <button>File a Claim</button>
-      </div>
-    </section>
-  </main>
+    <div class="cards">
+      <div class="card"><a href="#">View / Manage Policy</a></div>
+      <div class="card"><a href="#">Make a Payment</a></div>
+      <div class="card"><a href="#">File a Claim</a></div>
+      <div class="card"><a href="#">Profile & Settings</a></div>
+      <div class="card"><a href="index.html">Back to Homepage</a></div>
+    </div>
+  </div>
 
   <footer>
-    <p>&copy; 2025 Conn Simple. All rights reserved.</p>
+    <p>&copy; 2025 Conn Simple - Connecticut Auto Insurance</p>
   </footer>
-
-  <!-- Load JS -->
-  <script src="script.js"></script>
 </body>
 </html>
