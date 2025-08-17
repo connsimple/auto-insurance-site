@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Get a Quote – Conn Simple</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="Conn Simple Logo" class="brand-logo" />
+      <div class="brand-text">
+        <h1>CONN SIMPLE</h1>
+        <p class="tagline">CONNECTICUT AUTO INSURANCE</p>
+      </div>
+    </a>
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="quote.html" class="active">Get a Quote</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Open Menu">☰</button>
+  </header>
+
+  <main class="container content">
+    <h2>Get Your Free Auto Insurance Quote</h2>
+    <p class="muted">Fill out the form below. All fields are required. You can upload a photo or PDF of your driver’s license.</p>
+
+    <form action="thankyou.html" method="post" enctype="multipart/form-data" class="quote-form card form-grid">
+      <!-- Contact -->
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input id="name" name="name" type="text" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input id="email" name="email" type="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input id="phone" name="phone" type="tel" required />
+      </div>
+
+      <!-- Vehicle -->
+      <div class="form-group">
+        <label for="year">Vehicle Year</label>
+        <input id="year" name="year" type="number" min="1980" max="2035" required />
+      </div>
+
+      <div class="form-group">
+        <label for="make">Vehicle Make</label>
+        <input id="make" name="make" type="text" required />
+      </div>
+
+      <div class="form-group">
+        <label for="model">Vehicle Model</label>
+        <input id="model" name="model" type="text" required />
+      </div>
+
+      <div class="form-group">
+        <label for="vin">Vehicle VIN</label>
+        <input id="vin" name="vin" type="text" minlength="11" maxlength="17" required />
+      </div>
+
+      <!-- Driver -->
+      <div class="form-group">
+        <label for="dl">Driver License Number</label>
+        <input id="dl" name="dl" type="text" required />
+      </div>
+
+      <div class="form-group">
+        <label for="license">Upload Driver’s License (image or PDF)</label>
+        <input id="license" name="license" type="file" accept="image/*,application/pdf" required />
+      </div>
+
+      <!-- Progress Bar (JS updates width/text) -->
+      <div class="progress-wrap">
+        <div class="progress-bar" aria-label="Form completion progress">0% Complete</div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Submit Quote Request</button>
+      </div>
+    </form>
+
+    <p class="tiny">Submitting this form authorizes Conn Simple to contact you about your quote.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="container footnote">© 2025 Conn Simple. All rights reserved.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
