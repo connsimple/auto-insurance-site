@@ -1,38 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Conn Simple - Connecticut Auto Insurance</title>
-  <link rel="stylesheet" href="main.css">
+  <style>
+    /* Reset */
+    * {margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
+
+    body {background:#f9f9f9; color:#333; line-height:1.6;}
+
+    header {
+      background:#004f9e;
+      color:white;
+      padding:15px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    header img {height:50px;}
+    nav ul {list-style:none; display:flex; gap:20px;}
+    nav ul li a {
+      color:white; text-decoration:none; font-weight:bold;
+      padding:5px 10px; border-radius:5px; transition:0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      background:white; color:#004f9e;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1518684079-5c1810f9db24?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      color:white;
+      text-align:center;
+      padding:100px 20px;
+    }
+    .hero h1 {font-size:2.5em; margin-bottom:15px;}
+    .hero p {font-size:1.2em; margin-bottom:20px;}
+    .hero button {
+      background:#ffcc00; border:none; padding:15px 30px;
+      font-size:1.1em; font-weight:bold; cursor:pointer; border-radius:8px;
+    }
+
+    .section {
+      padding:40px 20px;
+      max-width:1100px; margin:auto;
+    }
+    .plans {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;}
+    .plan {
+      background:white; padding:20px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1);
+      text-align:center;
+    }
+    .plan h3 {margin-bottom:10px;}
+    .plan button {
+      margin-top:15px; padding:10px 20px;
+      background:#004f9e; color:white; border:none; border-radius:5px;
+      cursor:pointer;
+    }
+
+    footer {
+      background:#222; color:white; text-align:center; padding:20px; margin-top:40px;
+    }
+
+    /* Mobile */
+    @media(max-width:768px){
+      nav ul {flex-direction:column; display:none; background:#004f9e; position:absolute; top:70px; left:0; width:100%; padding:10px 0;}
+      nav ul.show {display:flex;}
+      .menu-toggle {display:block; cursor:pointer; font-size:1.5em;}
+    }
+    .menu-toggle {display:none; color:white;}
+  </style>
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="Conn Simple Logo">
-      <h1>CONN SIMPLE</h1>
-      <p>CONNECTICUT AUTO INSURANCE</p>
-    </div>
+    <img src="logo.png" alt="Conn Simple Logo" />
+    <div class="menu-toggle">&#9776;</div>
     <nav>
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="about.html">About Us</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <h2>Affordable Auto Insurance in Connecticut</h2>
-      <p>Get your free quote today with Conn Simple.</p>
-      <a href="quote.html" class="btn">Get a Quote</a>
-    </section>
-  </main>
+  <section class="hero">
+    <h1>Connecticut Auto Insurance Made Simple</h1>
+    <p>Affordable coverage. Hassle-free claims. Drive with confidence.</p>
+    <button onclick="window.location.href='quote.html'">Get a Quote</button>
+  </section>
+
+  <section class="section">
+    <h2 style="text-align:center; margin-bottom:20px;">Choose Your Coverage</h2>
+    <div class="plans">
+      <div class="plan">
+        <h3>Basic Plan</h3>
+        <p>Liability coverage only. Perfect for budget-conscious drivers.</p>
+        <button>Get Started</button>
+      </div>
+      <div class="plan">
+        <h3>Standard Plan</h3>
+        <p>Liability + Collision. Balanced protection and value.</p>
+        <button>Get Started</button>
+      </div>
+      <div class="plan">
+        <h3>Premium Plan</h3>
+        <p>Full coverage with roadside assistance and extras.</p>
+        <button>Get Started</button>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <p>&copy; 2025 Conn Simple. All Rights Reserved.</p>
+    <p>&copy; 2025 Conn Simple. All rights reserved.</p>
+    <p>Connecticut Auto Insurance | NAIC #12345</p>
   </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('nav ul');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Highlight nav links
+    const links = document.querySelectorAll('nav ul li a');
+    links.forEach(link => {
+      if(link.href === window.location.href){
+        link.classList.add('active');
+      }
+    });
+  </script>
 </body>
 </html>
