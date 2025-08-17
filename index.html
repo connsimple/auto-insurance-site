@@ -3,33 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conn Simple - Auto Insurance</title>
+  <title>Conn Simple | Connecticut Auto Insurance</title>
   <link rel="stylesheet" href="styles.css">
   <script defer src="script.js"></script>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <nav class="navbar">
-      <div class="logo">
+      <a href="index.html" class="logo">
         <img src="logo.png" alt="Conn Simple Logo">
         <span>CONN SIMPLE</span>
-      </div>
+      </a>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="dashboard.html" class="btn">Dashboard</a></li>
       </ul>
+      <div class="menu-toggle">&#9776;</div>
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
-    <h1>Connecticut Auto Insurance</h1>
-    <p>Fast, reliable, and affordable insurance for drivers in CT.</p>
-    <a href="services.html" class="btn">Get a Quote</a>
+    <div class="hero-content">
+      <h1>Connecticut Auto Insurance Made Simple</h1>
+      <p>Fast, affordable coverage tailored for you.</p>
+      <form class="quote-form">
+        <input type="text" placeholder="Enter ZIP Code" required>
+        <button type="submit" class="btn-primary">Get a Quote</button>
+      </form>
+    </div>
   </section>
 
+  <!-- Why Choose Us -->
+  <section class="features">
+    <h2>Why Choose Conn Simple?</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3>Affordable Rates</h3>
+        <p>Competitive pricing built for Connecticut drivers.</p>
+      </div>
+      <div class="feature">
+        <h3>Fast Claims</h3>
+        <p>Quick, hassle-free claims processing.</p>
+      </div>
+      <div class="feature">
+        <h3>Trusted Service</h3>
+        <p>Backed by customer-first support, always.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial-slider">
+      <blockquote>"Conn Simple saved me over $400/year on my car insurance!" – James, Hartford</blockquote>
+      <blockquote>"Best customer service I’ve ever had from an insurance company." – Maria, New Haven</blockquote>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Conn Simple. All rights reserved.</p>
   </footer>
