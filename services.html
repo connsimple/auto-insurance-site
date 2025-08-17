@@ -3,42 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services - Conn Simple</title>
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
+  <title>Services — Conn Simple</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <nav class="navbar">
-      <div class="logo">
-        <img src="logo.png" alt="Conn Simple Logo">
-        <span>CONN SIMPLE</span>
-      </div>
+    <div class="logo">
+      <img src="logo.png" alt="Conn Simple Logo">
+      <h1>CONN SIMPLE</h1>
+      <p>Connecticut Auto Insurance</p>
+    </div>
+    <nav>
+      <div class="menu-toggle">☰</div>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="services.html" class="active">Services</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="content">
-      <h1>Our Services</h1>
-      <ul>
-        <li>✔ Auto Insurance Coverage</li>
-        <li>✔ Fast Online Quotes</li>
-        <li>✔ Policy Management Dashboard</li>
-        <li>✔ 24/7 Customer Support</li>
-      </ul>
-      <a href="contact.html" class="btn">Contact Us</a>
+    <section class="page-header">
+      <h2>Our Insurance Services</h2>
+      <p>Comprehensive coverage options for Connecticut drivers.</p>
+    </section>
+
+    <section class="services-list">
+      <div class="service">
+        <h3>Auto Liability Insurance</h3>
+        <p>
+          Protects you if you’re responsible for an accident, covering damages
+          to other people’s property and injuries.
+        </p>
+      </div>
+
+      <div class="service">
+        <h3>Collision Coverage</h3>
+        <p>
+          Covers repair or replacement costs if your car is damaged in a crash,
+          regardless of fault.
+        </p>
+      </div>
+
+      <div class="service">
+        <h3>Comprehensive Coverage</h3>
+        <p>
+          Protects your vehicle from theft, vandalism, weather damage, and other
+          non-collision events.
+        </p>
+      </div>
+
+      <div class="service">
+        <h3>Uninsured Motorist Coverage</h3>
+        <p>
+          Provides protection if you’re in an accident caused by a driver
+          without insurance.
+        </p>
+      </div>
     </section>
   </main>
 
   <footer>
     <p>&copy; 2025 Conn Simple. All rights reserved.</p>
   </footer>
+
+  <!-- Load JS -->
+  <script src="script.js"></script>
 </body>
 </html>
