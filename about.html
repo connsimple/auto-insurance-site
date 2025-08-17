@@ -1,59 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us — Conn Simple</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Conn Simple Insurance</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
+    body {background:#f9f9f9; color:#333; line-height:1.6;}
+
+    header {background:#004f9e; color:white; padding:15px 20px; display:flex; align-items:center; justify-content:space-between;}
+    header img {height:50px;}
+    nav ul {list-style:none; display:flex; gap:20px;}
+    nav ul li a {color:white; text-decoration:none; font-weight:bold; padding:5px 10px; border-radius:5px; transition:0.3s;}
+    nav ul li a:hover, nav ul li a.active {background:white; color:#004f9e;}
+    .menu-toggle {display:none; color:white;}
+
+    .section {padding:40px 20px; max-width:1000px; margin:auto;}
+    h1 {text-align:center; color:#004f9e; margin-bottom:20px;}
+    .about-box {
+      background:white; padding:30px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    }
+    .about-box h2 {margin-bottom:10px; color:#004f9e;}
+    .about-box p {margin-bottom:15px;}
+
+    footer {background:#222; color:white; text-align:center; padding:20px; margin-top:40px;}
+
+    /* Mobile */
+    @media(max-width:768px){
+      nav ul {flex-direction:column; display:none; background:#004f9e; position:absolute; top:70px; left:0; width:100%; padding:10px 0;}
+      nav ul.show {display:flex;}
+      .menu-toggle {display:block; cursor:pointer; font-size:1.5em;}
+    }
+  </style>
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="Conn Simple Logo">
-      <h1>CONN SIMPLE</h1>
-      <p>Connecticut Auto Insurance</p>
-    </div>
+    <img src="logo.png" alt="Conn Simple Logo" />
+    <div class="menu-toggle">&#9776;</div>
     <nav>
-      <div class="menu-toggle">☰</div>
-      <ul class="nav-links">
+      <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="page-header">
-      <h2>About Conn Simple</h2>
-      <p>Your trusted Connecticut auto insurance provider.</p>
-    </section>
+  <section class="section">
+    <h1>About Conn Simple</h1>
+    <div class="about-box">
+      <h2>Our Mission</h2>
+      <p>At Conn Simple, our mission is to make auto insurance easy, affordable, and reliable for every driver in Connecticut. We believe that protecting your vehicle and family should never be complicated.</p>
 
-    <section class="about-content">
-      <h3>Our Mission</h3>
-      <p>
-        At Conn Simple, we believe that auto insurance should be affordable,
-        transparent, and tailored to every driver in Connecticut. Our mission
-        is to simplify the insurance process while providing maximum coverage
-        and peace of mind.
-      </p>
+      <h2>Who We Are</h2>
+      <p>We are a dedicated local insurance provider focused on serving Connecticut drivers. With strong customer support and simplified policies, we take the stress out of insurance so you can focus on the road ahead.</p>
 
-      <h3>Why Choose Us?</h3>
-      <ul>
-        <li>Local expertise and Connecticut-focused policies</li>
-        <li>Competitive rates with no hidden fees</li>
-        <li>Friendly support team available 24/7</li>
+      <h2>Why Choose Us?</h2>
+      <ul style="margin-left:20px; list-style:disc;">
+        <li>Affordable coverage options for every budget</li>
+        <li>Fast and easy claims process</li>
+        <li>Trusted by thousands of Connecticut drivers</li>
+        <li>Backed by NAIC #12345</li>
       </ul>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <footer>
     <p>&copy; 2025 Conn Simple. All rights reserved.</p>
+    <p>Connecticut Auto Insurance | NAIC #12345</p>
   </footer>
 
-  <!-- Load JS -->
-  <script src="script.js"></script>
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('nav ul');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Highlight nav link
+    const links = document.querySelectorAll('nav ul li a');
+    links.forEach(link => {
+      if(link.href === window.location.href){
+        link.classList.add('active');
+      }
+    });
+  </script>
 </body>
 </html>
