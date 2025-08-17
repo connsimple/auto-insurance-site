@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up — Conn Simple</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Conn Simple Logo">
+      <h1>CONN SIMPLE</h1>
+      <p>Connecticut Auto Insurance</p>
+    </div>
+    <nav>
+      <div class="menu-toggle">☰</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html" class="active">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <h2>Create Your Account</h2>
+      <p>Sign up to manage your auto insurance policies with Conn Simple.</p>
+    </section>
+
+    <section class="form-section">
+      <form id="signupForm" class="signup-form">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="John Doe" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter a strong password" required>
+
+        <button type="submit">Sign Up</button>
+      </form>
+      <p class="signup-link">Already have an account? <a href="login.html">Login here</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Conn Simple. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      // For now, just redirect to dashboard (Phase 2 real signup system)
+      window.location.href = "dashboard.html";
+    });
+  </script>
+</body>
+</html>
