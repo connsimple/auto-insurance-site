@@ -3,56 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>File a Claim - Conn Simple Auto Insurance</title>
+  <title>File a Claim - Conn Simple</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f9fa; color: #333; }
-    header { background: #041E42; color: #fff; padding: 15px; text-align: center; }
-    nav a { margin: 0 10px; color: #fff; text-decoration: none; }
-    .container { max-width: 800px; margin: 30px auto; background: #fff; padding: 20px; border-radius: 8px; }
-    h2 { color: #041E42; }
-    form { display: flex; flex-direction: column; }
-    label { margin-top: 10px; }
-    input, textarea { padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; }
-    button { margin-top: 15px; padding: 10px; background: #041E42; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
-    button:hover { background: #062a5c; }
-    footer { background: #041E42; color: #fff; text-align: center; padding: 15px; margin-top: 30px; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background: #004c97;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    header img {
+      height: 40px;
+      vertical-align: middle;
+    }
+
+    .claims-container {
+      max-width: 700px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #004c97;
+    }
+
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      background: #004c97;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #003a73;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #004c97;
+      color: white;
+      margin-top: 30px;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Conn Simple Auto Insurance</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="quote.html">Get a Quote</a>
-      <a href="claims.html">File a Claim</a>
-      <a href="about.html">About Us</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <img src="logo.png" alt="Conn Simple Logo">
+    <h1>File a Claim</h1>
   </header>
 
-  <div class="container">
-    <h2>File a Claim</h2>
-    <p>If you’ve been in an accident or need to report a claim, please complete the form below.</p>
+  <div class="claims-container">
+    <h2>Submit Your Claim</h2>
+    <form>
+      <label for="policyNumber">Policy Number</label>
+      <input type="text" id="policyNumber" name="policyNumber" placeholder="Enter Policy #" required>
 
-    <form action="mailto:simpleautocenter@gmail.com" method="post" enctype="text/plain">
-      <label for="name">Full Name:</label>
-      <input type="text" id="name" name="name" required>
+      <label for="incidentDate">Date of Incident</label>
+      <input type="date" id="incidentDate" name="incidentDate" required>
 
-      <label for="policy">Policy Number:</label>
-      <input type="text" id="policy" name="policy" required>
+      <label for="claimType">Type of Claim</label>
+      <select id="claimType" name="claimType" required>
+        <option value="">Select Type</option>
+        <option value="accident">Accident</option>
+        <option value="theft">Theft</option>
+        <option value="damage">Vehicle Damage</option>
+        <option value="injury">Injury</option>
+      </select>
 
-      <label for="date">Date of Incident:</label>
-      <input type="date" id="date" name="date" required>
+      <label for="description">Incident Description</label>
+      <textarea id="description" name="description" placeholder="Provide details of the incident..." required></textarea>
 
-      <label for="description">Description of Incident:</label>
-      <textarea id="description" name="description" rows="5" required></textarea>
+      <label for="upload">Upload Photos (optional)</label>
+      <input type="file" id="upload" name="upload" accept="image/*">
 
       <button type="submit">Submit Claim</button>
     </form>
+
+    <a href="dashboard.html" class="back-link">← Back to Dashboard</a>
   </div>
 
   <footer>
-    <p>&copy; 2025 Conn Simple Auto Insurance</p>
+    <p>&copy; 2025 Conn Simple - Connecticut Auto Insurance</p>
   </footer>
 </body>
 </html>
