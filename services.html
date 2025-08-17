@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services & Quotes | Conn Simple</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <script defer src="script.js"></script>
+</head>
+<body>
+<header class="navbar">
+  <div class="container wrap">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Conn Simple logo"/>
+      <div>
+        <strong>CONN SIMPLE</strong><div class="tag">CONNECTICUT AUTO INSURANCE</div>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="services.html">Get a Quote</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h2>Coverage & Free Quote</h2>
+    <p>Answer a few questions — we’ll aim to beat competitors.</p>
+  </div>
+</section>
+
+<main class="container section">
+  <div class="grid grid-2">
+    <!-- Coverage cards -->
+    <div class="card">
+      <h3>Coverage Options</h3>
+      <div class="grid grid-3" style="margin-top:12px">
+        <div class="card">
+          <h4>Basic</h4>
+          <p>Meets CT minimums. Budget-friendly.</p>
+        </div>
+        <div class="card">
+          <h4>Standard</h4>
+          <p>Most popular. Solid protection.</p>
+        </div>
+        <div class="card">
+          <h4>Premium</h4>
+          <p>Max protection + roadside & rental.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quote form -->
+    <div class="card">
+      <h3>Start Your Quote</h3>
+      <form action="thankyou.html" method="get" novalidate>
+        <label>Full Name</label>
+        <input name="name" required>
+
+        <label>Email</label>
+        <input name="email" type="email" required>
+
+        <label>Phone</label>
+        <input name="phone" type="tel" required>
+
+        <div class="grid grid-2">
+          <div>
+            <label>ZIP Code</label>
+            <input name="zip" inputmode="numeric" required>
+          </div>
+          <div>
+            <label>Driver’s License #</label>
+            <input name="dl" required>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div>
+            <label>Vehicle Year</label>
+            <input name="year" inputmode="numeric" required>
+          </div>
+          <div>
+            <label>Make</label>
+            <input name="make" required>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div>
+            <label>Model</label>
+            <input name="model" required>
+          </div>
+          <div>
+            <label>VIN</label>
+            <input name="vin" required>
+          </div>
+        </div>
+
+        <label>Upload Driver’s License (Phase 2)</label>
+        <input type="file" disabled title="Secure uploads will be enabled in Phase 2">
+
+        <button class="btn-primary" type="submit">Get My Quote</button>
+        <p style="color:var(--muted);margin-top:6px">We’ll email your estimate and next steps.</p>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container wrap">
+    <div>© 2025 Conn Simple</div>
+    <div><a href="privacy.html">Privacy</a></div>
+  </div>
+</footer>
+</body>
+</html>
