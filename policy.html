@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Conn Simple • Policy & ID Cards</title>
+<style>
+  :root{
+    --navy:#003366; --uconn:#0d50a5; --accent:#ffcc00; --ink:#0f172a;
+    --muted:#475569; --bg:#f6f8fb; --card:#fff; --border:#e5e7eb;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.55;overflow-x:hidden}
+
+  /* Header / nav (minimal + matches Phase 1 vibe) */
+  header{position:sticky;top:0;z-index:1000;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+  .navbar{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 16px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+  .brand img{width:40px;height:40px;object-fit:contain}
+  .brand .title{display:flex;flex-direction:column;line-height:1.05}
+  .brand .title strong{letter-spacing:.4px}
+  .brand .title small{color:#dbeafe;font-size:12px}
+  .nav a{color:#fff;text-decoration:none;background:transparent;border-radius:8px;padding:10px 12px}
+  .nav a:hover{background:var(--uconn)}
+  .container{max-width:1200px;margin:0 auto;padding:20px 16px}
+
+  /* Card & layout */
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 4px 14px rgba(2,6,23,.06)}
+  .panel{padding:16px}
+  .section{margin-top:18px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:960px){ .grid{grid-template-columns:1fr} }
+
+  /* Form */
+  .form{display:grid;gap:12px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:720px){ .row{grid-template-columns:1fr} }
+  label{font-weight:600;font-size:14px;color:#0f172a}
+  input,select,textarea{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:10px;background:#fff}
+  .help{font-size:12px;color:var(--muted)}
+  .btn{display:inline-block;padding:12px 16px;border-radius:10px;font-weight:800;border:0;cursor:pointer;text-decoration:none}
+  .btn.accent{background:var(--accent);color:#111827}
+  .btn.dark{background:#0f172a;color:#fff}
+  .btn.ghost{background:#fff;border:1px solid var(--border);color:#0f172a}
+  .stack{display:flex;flex-wrap:wrap;gap:8px}
+  .stack .btn{flex:1;min-width:220px;text-align:center}
+  .preview{margin-top:12px;padding:14px;border:1px dashed #cbd5e1;border-radius:10px;background:#f8fafc;overflow:auto}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:6px 12px}
+  .kv div{padding:4px 0}
+  .badge{display:inline-block;background:#e2e8f0;color:#0f172a;padding:2px 8px;border-radius:999px;font-size:12px}
+
+  footer{margin:30px 0 10px;text-align:center;color:#64748b;font-size:13px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Conn Simple logo" onerror="this.style.display='none'">
+      <div class="title">
+        <strong>CONN SIMPLE</strong>
+        <small>Connecticut Auto Insurance</small>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="#quote">Policy & ID Cards</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <div class="card section">
+    <div class="panel">
+      <h1 style="font-size:clamp(22px,3.5vw,30px);margin-bottom:6px">Create Insurance ID Card & Policy Binder</h1>
+      <p class="help">Fill in policyholder & vehicle info, select a plan & term. We’ll generate a unique policy #, dates, and two PDFs (ID card + binder). NAIC: <strong>47082</strong>.</p>
+    </div>
+  </div>
+
+  <div id="quote" class="grid section">
+    <!-- LEFT: FORM -->
+    <div class="card">
+      <div class="panel">
+        <h2 style="margin-bottom:10px">Policy Details</h2>
+        <form id="policyForm" class="form">
+          <div class="row">
+            <div>
+              <label>Insured Full Name</label>
+              <input id="insuredName" required placeholder="First Last">
+            </div>
+            <div>
+              <label>Email</label>
+              <input id="email" type="email" required placeholder="name@email.com">
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>Address</label>
+              <input id="address" required placeholder="Street, City">
+            </div>
+            <div class="row" style="grid-template-columns:2fr 1fr;">
+              <div>
+                <label>State</label>
+                <select id="state" required>
+                  <option value="" disabled selected>Select state</option>
+                  <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option>
+                  <option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option>
+                  <option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option>
+                  <option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option>
+                  <option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option>
+                  <option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option>
+                  <option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option>
+                  <option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option>
+                  <option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option>
+                  <option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+                </select>
+              </div>
+              <div>
+                <label>ZIP</label>
+                <input id="zip" placeholder="06010">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>Vehicle – Year Make Model</label>
+              <input id="ymm" required placeholder="2020 Honda Accord">
+            </div>
+            <div>
+              <label>VIN</label>
+              <input id="vin" required placeholder="17 characters">
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>License Plate</label>
+              <input id="plate" placeholder="ABC1234">
+            </div>
+            <div>
+              <label>Driver License #</label>
+              <input id="dl" required placeholder="DL number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>Policy Term</label>
+              <select id="term" required>
+                <option value="" disabled selected>Select term</option>
+                <option value="6">6 months</option>
+                <option value="12">12 months</option>
+              </select>
+            </div>
+            <div>
+              <label>Coverage Plan</label>
+              <select id="plan" required>
+                <option value="" disabled selected>Select plan</option>
+                <option value="basic">Basic Liability (meets minimums)</option>
+                <option value="standard">Standard (common)</option>
+                <option value="premium">Premium (full protection)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>Monthly Price (auto)</label>
+              <input id="priceMonthly" readonly placeholder="$ —">
+            </div>
+            <div>
+              <label>Total Policy Price (auto)</label>
+              <input id="priceTotal" readonly placeholder="$ —">
+            </div>
+          </div>
+
+          <div class="stack">
+            <button type="button" class="btn accent" onclick="calculateQuote()">Calculate</button>
+            <button type="button" class="btn dark" onclick="preparePolicy()">Generate Policy # & Dates</button>
+          </div>
+
+          <div id="policyInfo" class="preview" style="display:none">
+            <div class="kv">
+              <div><strong>Policy #</strong></div><div id="policyNumber"></div>
+              <div><strong>Effective</strong></div><div id="effective"></div>
+              <div><strong>Expires</strong></div><div id="expires"></div>
+              <div><strong>NAIC</strong></div><div>47082</div>
+              <div><strong>Plan</strong></div><div><span class="badge" id="planLabel"></span></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- RIGHT: PREVIEW + DOWNLOAD -->
+    <div class="card">
+      <div class="panel">
+        <h2 style="margin-bottom:10px">Downloads</h2>
+        <p class="help" style="margin-bottom:12px">After you calculate and generate your policy, use these buttons.</p>
+        <div class="stack" style="margin-bottom:10px">
+          <button class="btn dark" onclick="downloadIdCard()">Download Insurance ID Card (PDF)</button>
+          <button class="btn ghost" onclick="downloadBinder()">Download Policy Binder (PDF)</button>
+        </div>
+
+        <div class="preview">
+          <h3 style="margin-bottom:8px">Coverage (Based on Plan)</h3>
+          <div id="coveragePreview" class="kv"></div>
+        </div>
+
+        <p id="pdfNote" class="help" style="margin-top:10px;display:none">PDFs generated. If your logo doesn’t show, ensure <code>logo.png</code> is in this folder.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 Conn Simple — Connecticut Auto Insurance (NAIC 47082). For demonstration purposes only. Replace limits/rates with filed values before production.</footer>
+</main>
+
+<!-- jsPDF -->
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+<script>
+  // ===== CONFIG =====
+  const COMPANY = { name:'Conn Simple', naic:'47082', city:'Hartford', state:'CT' };
+
+  // Realistic coverage tiers (you can later tune to state-minimum overrides)
+  const PLAN = {
+    basic: {
+      label:'Basic Liability',
+      limits: {
+        BI:'$25,000 per person / $50,000 per accident',
+        PD:'$25,000 per accident',
+        UM:'$25,000 / $50,000',
+        MedPay:'$1,000',
+        Comp:'—',
+        Coll:'—',
+        Rental:'—',
+        Roadside:'—'
+      },
+      baseMonthly: 89
+    },
+    standard: {
+      label:'Standard',
+      limits: {
+        BI:'$50,000 per person / $100,000 per accident',
+        PD:'$50,000 per accident',
+        UM:'$50,000 / $100,000',
+        MedPay:'$5,000',
+        Comp:'$500 deductible',
+        Coll:'$1,000 deductible',
+        Rental:'$30/day up to 30 days',
+        Roadside:'Included'
+      },
+      baseMonthly: 129
+    },
+    premium: {
+      label:'Premium',
+      limits: {
+        BI:'$100,000 per person / $300,000 per accident',
+        PD:'$100,000 per accident',
+        UM:'$100,000 / $300,000',
+        MedPay:'$10,000',
+        Comp:'$250 deductible',
+        Coll:'$500 deductible',
+        Rental:'$50/day up to 30 days',
+        Roadside:'Included'
+      },
+      baseMonthly: 169
+    }
+  };
+
+  // Optional simple state factor (tiny demo tweak)
+  const STATE_FACTORS = {
+    NY:1.12, NJ:1.10, CA:1.08, FL:1.10, MA:1.06, CT:1.04, TX:1.05, PA:1.03
+  };
+
+  // ===== UTILITIES =====
+  function $(id){ return document.getElementById(id); }
+  function fmtUSD(n){ return '$' + n.toFixed(2); }
+  function addMonths(date, m){ const d=new Date(date); d.setMonth(d.getMonth()+m); return d; }
+  function toMMDDYYYY(d){ return String(d.getMonth()+1).padStart(2,'0')+'/'+String(d.getDate()).padStart(2,'0')+'/'+d.getFullYear(); }
+  function genPolicyNumber(state){
+    const d=new Date(), y=d.getFullYear(), mo=String(d.getMonth()+1).padStart(2,'0'), da=String(d.getDate()).padStart(2,'0');
+    const rand=String(Math.floor(Math.random()*900000)+100000);
+    return `CS-${(state||'CT')}-${y}${mo}${da}-${rand}`;
+  }
+  function updateCoveragePreview(planKey){
+    const box = $('coveragePreview');
+    box.innerHTML = '';
+    if(!planKey || !PLAN[planKey]) return;
+    const L = PLAN[planKey].limits;
+    const rows = [
+      ['Bodily Injury Liability', L.BI],
+      ['Property Damage Liability', L.PD],
+      ['Un/Underinsured Motorist', L.UM],
+      ['Medical Payments', L.MedPay],
+      ['Comprehensive', L.Comp],
+      ['Collision', L.Coll],
+      ['Rental Reimbursement', L.Rental],
+      ['Roadside Assistance', L.Roadside]
+    ];
+    rows.forEach(([k,v])=>{
+      const kdiv=document.createElement('div'); kdiv.innerHTML='<strong>'+k+'</strong>';
+      const vdiv=document.createElement('div'); vdiv.textContent = v;
+      box.appendChild(kdiv); box.appendChild(vdiv);
+    });
+  }
+
+  // ===== PRICING & POLICY =====
+  function calculateQuote(){
+    const planKey = $('plan').value;
+    const term = Number($('term').value||0);
+    const st = $('state').value;
+    if(!planKey||!term){ alert('Please select Plan and Term.'); return; }
+
+    let monthly = PLAN[planKey].baseMonthly;
+    // Small VIN/age tweak
+    const ymm = $('ymm').value.trim();
+    const yrMatch = ymm.match(/(^|\s)(19|20)\d{2}/);
+    if(yrMatch){ const yr = Number(yrMatch[0]); const age=Math.max(0,(new Date().getFullYear()-yr)); monthly += Math.min(30, Math.floor(age/5)*5); }
+    // State tweak
+    monthly *= (STATE_FACTORS[st] || 1);
+
+    $('priceMonthly').value = fmtUSD(monthly);
+    $('priceTotal').value = fmtUSD(monthly * term);
+    updateCoveragePreview(planKey);
+    alert('Pricing calculated.');
+  }
+
+  function preparePolicy(){
+    const name=$('insuredName').value.trim();
+    const state=$('state').value;
+    const term=Number($('term').value||0);
+    const planKey=$('plan').value;
+    if(!name||!state||!term||!planKey){ alert('Please complete Name, State, Term, and Plan.'); return; }
+
+    const pol = genPolicyNumber(state);
+    const eff = new Date();
+    const exp = addMonths(eff, term);
+
+    $('policyNumber').textContent = pol;
+    $('effective').textContent = toMMDDYYYY(eff);
+    $('expires').textContent = toMMDDYYYY(exp);
+    $('planLabel').textContent = PLAN[planKey].label;
+    $('policyInfo').style.display='block';
+    $('pdfNote').style.display='block';
+    updateCoveragePreview(planKey);
+  }
+
+  function getVals(){
+    return {
+      company: COMPANY.name,
+      naic: COMPANY.naic,
+      name: $('insuredName').value.trim(),
+      email: $('email').value.trim(),
+      address: $('address').value.trim(),
+      state: $('state').value,
+      zip: $('zip').value.trim(),
+      ymm: $('ymm').value.trim(),
+      vin: $('vin').value.trim(),
+      plate: $('plate').value.trim(),
+      dl: $('dl').value.trim(),
+      term: Number($('term').value||0),
+      planKey: $('plan').value,
+      priceMonthly: $('priceMonthly').value,
+      priceTotal: $('priceTotal').value,
+      policyNumber: $('policyNumber').textContent.trim(),
+      eff: $('effective').textContent.trim(),
+      exp: $('expires').textContent.trim()
+    };
+  }
+  function ensureReady(v){
+    const miss=[];
+    if(!v.name) miss.push('Insured Name');
+    if(!v.state) miss.push('State');
+    if(!v.ymm) miss.push('Vehicle');
+    if(!v.vin) miss.push('VIN');
+    if(!v.planKey) miss.push('Plan');
+    if(!v.policyNumber) miss.push('Policy Number (click Generate Policy)');
+    if(!v.eff||!v.exp) miss.push('Effective/Expiration (click Generate Policy)');
+    if(miss.length){ alert('Missing:\n- ' + miss.join('\n- ')); return false; }
+    return true;
+  }
+
+  async function loadLogoDataURL(){
+    try{
+      const res = await fetch('logo.png', {cache:'no-cache'});
+      if(!res.ok) return null;
+      const blob = await res.blob();
+      return await new Promise(r=>{
+        const fr=new FileReader(); fr.onload=()=>r(fr.result); fr.readAsDataURL(blob);
+      });
+    }catch(e){ return null; }
+  }
+
+  // ===== PDF: ID CARD =====
+  async function downloadIdCard(){
+    const v = getVals();
+    if(!ensureReady(v)) return;
+    const limits = PLAN[v.planKey].limits;
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit:'pt', format:[300, 190] });
+
+    // Border
+    doc.setDrawColor(60); doc.setLineWidth(1); doc.rect(12,12,276,166);
+
+    // Title line: STATE | INSURANCE IDENTIFICATION CARD
+    doc.setFont('helvetica','bold'); doc.setFontSize(11);
+    doc.text(`${v.state.toUpperCase()}  |  INSURANCE IDENTIFICATION CARD`, 150, 28, {align:'center'});
+
+    // Logo
+    try{
+      const dataUrl = await loadLogoDataURL();
+      if(dataUrl) doc.addImage(dataUrl,'PNG',16,36,42,42);
+    }catch(e){}
+
+    // Company + NAIC
+    doc.setFontSize(9); doc.setFont('helvetica','normal');
+    doc.text(`${v.company}`, 66, 44);
+    doc.text(`NAIC: ${v.naic}`, 66, 58);
+
+    // Policy block
+    doc.setFont('helvetica','bold'); doc.text('Policy:', 16, 96);
+    doc.setFont('helvetica','normal');
+    doc.text(`Number: ${v.policyNumber}`, 70, 96);
+    doc.text(`Effective: ${v.eff}`, 70, 110);
+    doc.text(`Expires: ${v.exp}`, 70, 124);
+
+    // Insured
+    doc.setFont('helvetica','bold'); doc.text('Insured:', 16, 146);
+    doc.setFont('helvetica','normal');
+    doc.text(`${v.name}`, 70, 146);
+    doc.text(`${v.address} ${v.zip?(', '+v.zip):''}`, 70, 160);
+
+    // Vehicle (right column)
+    doc.setFont('helvetica','bold'); doc.text('Vehicle', 210, 44);
+    doc.setFont('helvetica','normal');
+    const rx=210;
+    doc.text(`${v.ymm}`, rx, 58);
+    doc.text(`VIN: ${v.vin}`, rx, 72);
+    if(v.plate) doc.text(`Plate: ${v.plate}`, rx, 86);
+
+    // Coverage short line
+    doc.setFontSize(8);
+    const covLine = `Plan: ${PLAN[v.planKey].label} • BI ${limits.BI} • PD ${limits.PD}`;
+    doc.text(doc.splitTextToSize(covLine, 268), 16, 176);
+
+    doc.save(`ID-Card_${v.policyNumber}.pdf`);
+  }
+
+  // ===== PDF: BINDER (with front of card embedded) =====
+  async function downloadBinder(){
+    const v = getVals();
+    if(!ensureReady(v)) return;
+    const limits = PLAN[v.planKey].limits;
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit:'pt', format:'letter' });
+
+    // Header band
+    doc.setFillColor(13,80,165); doc.rect(0,0,612,70,'F');
+
+    // Logo + Header text
+    try{
+      const dataUrl = await loadLogoDataURL();
+      if(dataUrl) doc.addImage(dataUrl,'PNG',24,16,40,40);
+    }catch(e){}
+    doc.setTextColor(255); doc.setFont('helvetica','bold'); doc.setFontSize(16);
+    doc.text('Conn Simple — Insurance Binder', 312, 42, {align:'center'});
+    doc.setFont('helvetica','normal'); doc.setFontSize(10);
+    doc.text(`NAIC: ${v.naic}`, 560, 22, {align:'right'});
+    doc.text(`${COMPANY.city}, ${COMPANY.state}`, 560, 38, {align:'right'});
+
+    // Body
+    doc.setTextColor(0); doc.setFontSize(12);
+    let y=100;
+
+    doc.setFont('helvetica','bold'); doc.text('Policy Information', 24, y); y+=14;
+    doc.setFont('helvetica','normal');
+    doc.text(`Policy Number: ${v.policyNumber}`, 24, y); y+=14;
+    doc.text(`Effective Date: ${v.eff}`, 24, y); y+=14;
+    doc.text(`Expiration Date: ${v.exp}`, 24, y); y+=22;
+
+    doc.setFont('helvetica','bold'); doc.text('Insured', 24, y); y+=14;
+    doc.setFont('helvetica','normal');
+    doc.text(`Name: ${v.name}`, 24, y); y+=14;
+    doc.text(`Address: ${v.address}, ${v.state} ${v.zip}`, 24, y); y+=22;
+
+    doc.setFont('helvetica','bold'); doc.text('Vehicle', 24, y); y+=14;
+    doc.setFont('helvetica','normal');
+    doc.text(`Year/Make/Model: ${v.ymm}`, 24, y); y+=14;
+    doc.text(`VIN: ${v.vin}`, 24, y); y+=14;
+    if(v.plate){ doc.text(`Plate: ${v.plate}`, 24, y); y+=22; } else { y+=8; }
+
+    doc.setFont('helvetica','bold'); doc.text(`Coverage — ${PLAN[v.planKey].label}`, 24, y); y+=14;
+    doc.setFont('helvetica','normal');
+    const rows = [
+      ['Bodily Injury Liability', limits.BI],
+      ['Property Damage Liability', limits.PD],
+      ['Un/Underinsured Motorist', limits.UM],
+      ['Medical Payments', limits.MedPay],
+      ['Comprehensive', limits.Comp],
+      ['Collision', limits.Coll],
+      ['Rental Reimbursement', limits.Rental],
+      ['Roadside Assistance', limits.Roadside],
+    ];
+    rows.forEach(([k,val])=>{ doc.text(`${k}: ${val}`, 24, y); y+=14; });
+
+    y+=10;
+    doc.setFont('helvetica','bold'); doc.text('Premium', 24, y); y+=14;
+    doc.setFont('helvetica','normal');
+    doc.text(`Monthly: ${v.priceMonthly || '—'}`, 24, y); y+=14;
+    doc.text(`Total for ${v.term || '?'} months: ${v.priceTotal || '—'}`, 24, y); y+=22;
+
+    doc.setFont('helvetica','bold'); doc.text('Notes', 24, y); y+=14;
+    doc.setFont('helvetica','normal');
+    const note='This binder is evidence of insurance subject to policy terms and applicable state regulations. This is not a declaration page. Coverage is subject to underwriting and payment.';
+    doc.text(doc.splitTextToSize(note, 564), 24, y); y+=50;
+
+    // Signature
+    doc.line(24,y,220,y); doc.text('Authorized Signature', 24, y+14);
+    doc.text(toMMDDYYYY(new Date()), 520, y+14);
+
+    // Embed front of ID card at bottom (thumbnail)
+    // Render a mini ID card on the same page:
+    y+=40;
+    doc.setFont('helvetica','bold'); doc.text('ID Card (Front)', 24, y); y+=8;
+
+    // Draw a small card frame
+    const cx=24, cy=y+10, cw=300, ch=190;
+    doc.setDrawColor(130); doc.rect(cx, cy, cw, ch);
+
+    // Title on small card
+    doc.setFontSize(10); doc.text(`${v.state.toUpperCase()}  |  INSURANCE IDENTIFICATION CARD`, cx+cw/2, cy+16, {align:'center'});
+
+    // Try logo
+    try{
+      const dataUrl = await loadLogoDataURL();
+      if(dataUrl) doc.addImage(dataUrl,'PNG',cx+8,cy+24,36,36);
+    }catch(e){}
+
+    doc.setFontSize(9); doc.setFont('helvetica','normal');
+    doc.text(`${v.company}`, cx+52, cy+28);
+    doc.text(`NAIC: ${v.naic}`, cx+52, cy+42);
+
+    doc.setFont('helvetica','bold'); doc.text('Policy:', cx+8, cy+70);
+    doc.setFont('helvetica','normal');
+    doc.text(`Number: ${v.policyNumber}`, cx+62, cy+70);
+    doc.text(`Effective: ${v.eff}`, cx+62, cy+84);
+    doc.text(`Expires: ${v.exp}`, cx+62, cy+98);
+
+    doc.setFont('helvetica','bold'); doc.text('Insured:', cx+8, cy+120);
+    doc.setFont('helvetica','normal');
+    doc.text(`${v.name}`, cx+62, cy+120);
+    doc.text(`${v.address} ${v.zip?(', '+v.zip):''}`, cx+62, cy+134);
+
+    doc.setFont('helvetica','bold'); doc.text('Vehicle', cx+cw-95, cy+32);
+    doc.setFont('helvetica','normal');
+    doc.text(`${v.ymm}`, cx+cw-95, cy+46);
+    doc.text(`VIN: ${v.vin}`, cx+cw-95, cy+60);
+    if(v.plate) doc.text(`Plate: ${v.plate}`, cx+cw-95, cy+74);
+
+    doc.save(`Binder_${v.policyNumber}.pdf`);
+  }
+
+  // Hook up live preview updates
+  $('plan').addEventListener('change', e=>updateCoveragePreview(e.target.value));
+</script>
+</body>
+</html>
