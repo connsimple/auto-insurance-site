@@ -57,12 +57,25 @@
 
   <!-- CONTACT -->
   <section id="contact" class="contact">
-    <h2>Contact Us</h2>
+    <h2>Get a Quote</h2>
     <form id="quoteForm">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message"></textarea>
-      <button type="submit">Send</button>
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+
+      <!-- State dropdown -->
+      <select id="state" required>
+        <option value="">Select State</option>
+        <option value="CT">Connecticut</option>
+        <!-- add more states if needed -->
+      </select>
+
+      <!-- Plan choices -->
+      <p>Select Plan:</p>
+      <label><input type="radio" name="plan" value="basic" required> Basic</label>
+      <label><input type="radio" name="plan" value="standard"> Standard</label>
+      <label><input type="radio" name="plan" value="premium"> Premium</label>
+
+      <button type="submit">Get Quote</button>
     </form>
   </section>
 
