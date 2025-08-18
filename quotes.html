@@ -12,52 +12,35 @@
       background: #f8f9fa;
     }
     header {
-      background: #003366;
-      color: #fff;
+      background: #004481;
+      color: white;
+      padding: 1rem;
       text-align: center;
-      padding: 20px;
     }
     main {
-      max-width: 800px;
-      margin: 30px auto;
-      background: #fff;
-      padding: 25px;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    h2 {
-      text-align: center;
-      color: #003366;
-    }
-    form label {
+    label {
       display: block;
-      margin-top: 15px;
+      margin: 0.5rem 0 0.2rem;
       font-weight: bold;
     }
-    form input, form select {
+    input, select {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
       border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .tier-options {
-      margin-top: 20px;
-    }
-    .tier-options label {
-      display: block;
-      background: #f0f0f0;
-      padding: 10px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      cursor: pointer;
+      border-radius: 4px;
     }
     button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      background: #003366;
-      color: #fff;
+      background: #004481;
+      color: white;
+      padding: 0.75rem 1.5rem;
       border: none;
       border-radius: 5px;
       font-size: 16px;
@@ -82,38 +65,24 @@
       <label>Address</label>
       <input type="text" id="address" required>
 
-      <label>Date of Birth</label>
-      <input type="date" id="dob" required>
-
       <label>State</label>
       <select id="state" required>
-        <option value="">Select State</option>
+        <option value="">Select your state</option>
         <option value="NY">New York</option>
         <option value="CA">California</option>
         <option value="TX">Texas</option>
-        <!-- Add all states later -->
+        <option value="FL">Florida</option>
+        <!-- add all states later -->
       </select>
 
-      <label>Vehicle Information</label>
-      <input type="text" id="vehicle" placeholder="Year Make Model" required>
-
-      <div class="tier-options">
-        <h3>Select Coverage Tier</h3>
-        <label>
-          <input type="radio" name="tier" value="basic" required> Basic Coverage
-        </label>
-        <label>
-          <input type="radio" name="tier" value="standard"> Standard Coverage
-        </label>
-        <label>
-          <input type="radio" name="tier" value="premium"> Premium Coverage
-        </label>
-      </div>
+      <label>Vehicle</label>
+      <input type="text" id="vehicle" placeholder="e.g. 2022 Toyota Camry" required>
 
       <button type="submit">Get Quote</button>
     </form>
   </main>
 
+  <!-- ✅ JavaScript goes here at the bottom -->
   <script src="quote.js"></script>
 </body>
 </html>
