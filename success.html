@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment Success • Conn Simple</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 24px; max-width: 700px; margin: auto; }
+    .ok { background: #e8fff1; border: 1px solid #b6f0cb; padding: 16px; border-radius: 8px; }
+    .err { background: #ffe8e8; border: 1px solid #f0b6b6; padding: 16px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Thank you! 🎉</h1>
+  <div id="status" class="ok">Finishing your payment…</div>
+  <script>
+    (async () => {
+      const params = new URLSearchParams(location.search);
+      const orderID = params.get("token");           // PayPal "Order" approval returns ?token=ORDER_ID
+      const subscriptionId = params.get("subscription_id"); // Subscriptions return ?subscription_id=...
+
+      const statusBox = document.getElementById("status");
+
+      try {
+        if (orderID) {
+          // Capture one-time order
+          const res = await fetch("/.netlify/functions/capture-paypal-order", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ orderID })
+          });
+          const data = await res.json();
+
+          if (data.status === "COMPLETED" || (data.purchase_units && data.purchase_units[0]?.payments?.captures)) {
+            statusBox.textContent = "Payment captured successfully. You'll receive a confirmation email shortly.";
+          } else {
+            statusBox.className = "err";
+            statusBox.textContent = "We couldn't confirm the payment capture. Please contact support.";
+          }
+        } else if (subscriptionId) {
+          // For subscriptions, approval = active right away in most cases
+          statusBox.textContent = "Subscription approved. Your first month will be billed shortly.";
+        } else {
+          statusBox.className = "err";
+          statusBox.textContent = "Missing approval information.";
+        }
+      } catch (e) {
+        statusBox.className = "err";
+        statusBox.textContent = "There was an error finalizing your payment.";
+      }
+    })();
+  </script>
+</body>
+</html>
