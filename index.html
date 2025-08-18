@@ -6,6 +6,67 @@
   <title>Conn Simple Insurance</title>
   <style>
     /* all your CSS unchanged */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #333;
+      padding: 10px 20px;
+      color: #fff;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .hero {
+      height: 90vh;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .cta-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #0077cc;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    section {
+      padding: 60px 20px;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    form input, form select, form textarea, form button {
+      padding: 10px;
+      font-size: 16px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -16,7 +77,7 @@
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#features">Features</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Quote</a></li>
       </ul>
     </nav>
   </header>
@@ -26,7 +87,8 @@
     <div class="hero-content">
       <h1>Get Your Auto Quote Today</h1>
       <p>Affordable Connecticut Auto Insurance</p>
-      <a href="#contact" class="cta-btn">Start Quote</a>
+      <!-- FIXED: now scrolls to the actual quote form -->
+      <a href="#quoteForm" class="cta-btn">Start Quote</a>
     </div>
   </section>
 
@@ -55,27 +117,25 @@
     </div>
   </section>
 
-  <!-- CONTACT (FIXED QUOTE FORM) -->
+  <!-- QUOTE FORM -->
   <section id="contact" class="contact">
     <h2>Start Your Quote</h2>
     <form id="quoteForm">
-      <input id="name" type="text" placeholder="Your Name" required>
-      <input id="email" type="email" placeholder="Your Email" required>
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
 
-      <label for="state">Select Your State:</label>
       <select id="state" required>
-        <option value="">--Choose--</option>
+        <option value="">Select Your State</option>
         <option value="CT">Connecticut</option>
-        <option value="NY">New York</option>
-        <option value="MA">Massachusetts</option>
+        <!-- Add more states if needed -->
       </select>
 
-      <p>Select a Plan:</p>
-      <label><input type="radio" name="plan" value="basic" required> Basic</label>
-      <label><input type="radio" name="plan" value="standard"> Standard</label>
-      <label><input type="radio" name="plan" value="premium"> Premium</label>
+      <div>
+        <label><input type="radio" name="plan" value="basic" required> Basic Plan</label>
+        <label><input type="radio" name="plan" value="premium"> Premium Plan</label>
+      </div>
 
-      <button type="submit">Get My Quote</button>
+      <button type="submit">Get Quote</button>
     </form>
   </section>
 
