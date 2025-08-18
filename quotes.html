@@ -1,47 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quotes - Conn Simple</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Your Quote</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+    }
+    header {
+      background: #003366;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #003366;
+    }
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .tier-options {
+      margin-top: 20px;
+    }
+    .tier-options label {
+      display: block;
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #003366;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0055aa;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <nav class="navbar">
-      <a href="index.html" class="logo"><img src="logo.png" alt="Logo" /><span>CONN SIMPLE</span></a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="quotes.html" class="active">Quotes</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <h1>Start Your Quote</h1>
   </header>
 
-  <main class="page-content">
-    <h1>Get a Quote</h1>
+  <main>
+    <h2>Fill Out Your Information</h2>
     <form id="quoteForm">
-      <label>Name: <input type="text" required /></label>
-      <label>Email: <input type="email" required /></label>
-      <label>Vehicle: <input type="text" required /></label>
-      <label>Coverage:
-        <select required>
-          <option value="">Select coverage</option>
-          <option value="basic">Basic</option>
-          <option value="standard">Standard</option>
-          <option value="premium">Premium</option>
-        </select>
-      </label>
-      <button type="submit">Submit</button>
+      <label>Full Name</label>
+      <input type="text" id="name" required>
+
+      <label>Address</label>
+      <input type="text" id="address" required>
+
+      <label>Date of Birth</label>
+      <input type="date" id="dob" required>
+
+      <label>State</label>
+      <select id="state" required>
+        <option value="">Select State</option>
+        <option value="NY">New York</option>
+        <option value="CA">California</option>
+        <option value="TX">Texas</option>
+        <!-- Add all states later -->
+      </select>
+
+      <label>Vehicle Information</label>
+      <input type="text" id="vehicle" placeholder="Year Make Model" required>
+
+      <div class="tier-options">
+        <h3>Select Coverage Tier</h3>
+        <label>
+          <input type="radio" name="tier" value="basic" required> Basic Coverage
+        </label>
+        <label>
+          <input type="radio" name="tier" value="standard"> Standard Coverage
+        </label>
+        <label>
+          <input type="radio" name="tier" value="premium"> Premium Coverage
+        </label>
+      </div>
+
+      <button type="submit">Get Quote</button>
     </form>
-    <div id="quoteResult"></div>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Conn Simple. All rights reserved.</p>
-  </footer>
+  <script src="quote.js"></script>
 </body>
 </html>
