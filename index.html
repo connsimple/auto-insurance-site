@@ -55,27 +55,28 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT / QUOTE -->
   <section id="contact" class="contact">
-    <h2>Get a Quote</h2>
+    <h2>Start Your Quote</h2>
     <form id="quoteForm">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
+      <input id="name" type="text" placeholder="Your Name" required>
+      <input id="email" type="email" placeholder="Your Email" required>
 
-      <!-- State dropdown -->
+      <label for="state">Select Your State:</label>
       <select id="state" required>
-        <option value="">Select State</option>
+        <option value="">--Choose--</option>
         <option value="CT">Connecticut</option>
-        <!-- add more states if needed -->
+        <option value="NY">New York</option>
+        <option value="MA">Massachusetts</option>
+        <!-- add more states as needed -->
       </select>
 
-      <!-- Plan choices -->
-      <p>Select Plan:</p>
+      <p>Select a Plan:</p>
       <label><input type="radio" name="plan" value="basic" required> Basic</label>
       <label><input type="radio" name="plan" value="standard"> Standard</label>
       <label><input type="radio" name="plan" value="premium"> Premium</label>
 
-      <button type="submit">Get Quote</button>
+      <button type="submit">Get My Quote</button>
     </form>
   </section>
 
